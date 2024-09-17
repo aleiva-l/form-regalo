@@ -50,7 +50,7 @@
     <h2>Generar QR para Formulario de Regalo</h2>
     <form id="qrForm">
         <label for="pelotero">Pelotero:</label>
-        <input type="text" id="pelotero" name="pelotero" placeholder="Nombre del pelotero" required>
+        <input type="text" id="pelotero" name="pelotero" readonly> <!-- Campo de solo lectura -->
 
         <label for="cumpleanero">Cumpleañero:</label>
         <input type="text" id="cumpleanero" name="cumpleanero" placeholder="Nombre del cumpleañero" required>
@@ -71,6 +71,27 @@
 
 <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 <script>
+    // Función para obtener los parámetros de la URL
+    function getQueryParams() {
+        const params = {};
+        window.location.search.substring(1).split("&").forEach(function (pair) {
+            const [key, value] = pair.split("=");
+            if (key && value) {
+                params[decodeURIComponent(key)] = decodeURIComponent(value.replace(/\+/g, " "));
+            }
+        });
+        return params;
+    }
+
+    // Prellenar el campo pelotero con el valor del query param
+    window.onload = function() {
+        const params = getQueryParams();
+        if (params.pelotero) {
+            document.getElementById('pelotero').value = params.pelotero; // Asignar valor al campo pelotero
+        }
+    };
+
+    // Función para generar el código QR
     function generarQR() {
         const pelotero = document.getElementById('pelotero').value;
         const cumpleanero = document.getElementById('cumpleanero').value;
