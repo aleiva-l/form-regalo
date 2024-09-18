@@ -82,8 +82,9 @@
 
     // Asignar los valores a los campos del formulario
     document.getElementById('pelotero').value = params.pelotero || "Happy";
-    if params.cumpleanero != null then
+    if (params.cumpleanero != null) {
         document.getElementById('cumpleanero').value = params.cumpleanero;
+    }
     document.getElementById('fechaCumple').value = params.fechaCumple; // Valor predeterminado
     document.getElementById('horaCumple').value = params.horaCumple; // Valor predeterminado
 
