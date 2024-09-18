@@ -46,13 +46,13 @@
         <input type="text" id="pelotero" name="pelotero" readonly>
 
         <label for="cumpleanero">Cumpleañero:</label>
-        <input type="text" id="cumpleanero" name="cumpleanero" required>
+        <input type="text" id="cumpleanero" name="cumpleanero" placeholder="Nombre cumpleañero" required>
 
         <label for="fechaCumple">Fecha del cumpleaños:</label>
-        <input type="date" id="fechaCumple" name="fechaCumple" readonly>
+        <input type="date" id="fechaCumple" name="fechaCumple" required>
 
         <label for="horaCumple">Hora del cumpleaños:</label>
-        <input type="time" id="horaCumple" name="horaCumple" readonly>
+        <input type="time" id="horaCumple" name="horaCumple" required>
 
         <label for="invitado">Tu nombre:</label>
         <input type="text" id="invitado" name="invitado" placeholder="Escribe tu nombre" required>
@@ -81,7 +81,7 @@
     const params = getQueryParams();
 
     // Asignar los valores a los campos del formulario
-    document.getElementById('pelotero').value = params.pelotero || "Carlos";
+    document.getElementById('pelotero').value = params.pelotero || "Happy";
     document.getElementById('cumpleanero').value = params.cumpleanero || "Juan";
     document.getElementById('fechaCumple').value = params.fechaCumple || "2024-12-31"; // Valor predeterminado
     document.getElementById('horaCumple').value = params.horaCumple || "18:00"; // Valor predeterminado
@@ -97,7 +97,8 @@
         const fechaCumple = document.getElementById('fechaCumple').value;
         const horaCumple = document.getElementById('horaCumple').value;
 
-        const mensaje = `Hola ${cumpleanero}, soy ${invitado}. Quiero regalarte ${monto} por tu cumpleaños. La fecha de tu fiesta es el ${fechaCumple} a las ${horaCumple}. ¡Felicidades! Pelotero: ${pelotero}.`;
+      //  const mensaje = `Hola ${cumpleanero}, soy ${invitado}. Quiero regalarte ${monto} por tu cumpleaños. La fecha de tu fiesta es el ${fechaCumple} a las ${horaCumple}. ¡Felicidades! Pelotero: ${pelotero}.`;
+        const mensaje = `Pelotero: ${pelotero}. \n Cumpleañero: ${cumpleanero}. \n Fecha cumple: ${fechaCumple}. \n Horario: ${horaCumple}. \n Invitado: ${invitado}. \n Monto: ${monto}`;
 
         const urlWhatsApp = `https://wa.me/542665109450?text=${encodeURIComponent(mensaje)}`;
         window.open(urlWhatsApp, '_blank');
